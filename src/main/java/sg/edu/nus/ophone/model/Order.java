@@ -71,10 +71,6 @@ public class Order {
         this.id = id;
     }
 
-    public User getUserId() {
-        return user;
-    }
-
     public void setUser(User user) {
         this.user = user;
     }
