@@ -4,13 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Cancel Order</title>
+  <style>
+    .custom-btn {
+      background-color: #FF7101;
+      border-color: #FF7101;
+      color: #fff;
+    }
+    .custom-btn:hover {
+      background-color: #E05D00; /* Darker shade on hover */
+      border-color: #E05D00;     /* Match the border color */
+      color: #fff;               /* Keep the text color white */
+    }
+  </style>
 </head>
 <body>
 <div class="container">
   <br/>
   <h1>Your order has been cancelled successfully.</h1> <br/>
   <h2>Order Details</h2>
-  <div><a href="#" onclick="history.go(-1); return false;" class="btn btn-primary btn-sm mb-3 float-right">Back</a></div>
+  <div><a href="#" onclick="history.go(-1); return false;" class="btn custom-btn btn-sm mb-3 float-right">Back</a></div>
   <br/>
   <table class = "table table-striped table-responsive-md">
     <thead>

@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
   @Query("SELECT u FROM User u WHERE u.userType =:userType")
   List<User> findByUserType(String userType);
 
-  List<User> findByName(String name);
+  User findByName(String name);
   
 	boolean existsByName(String username);
 }

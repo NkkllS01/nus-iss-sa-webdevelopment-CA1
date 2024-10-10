@@ -20,4 +20,6 @@ public interface UserService {
 	boolean login(String username,String password);
 	boolean usernameExists(String username);
 	void saveUser(User user);
+	User findByName(String name);
+
 }

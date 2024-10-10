@@ -180,16 +180,34 @@ public class OrderController {
              model.addAttribute("orderDetails", orderDetails);
              return "order-cancel";
          } else {
+             model.addAttribute("errorTitle", "Unsuccessful Order Cancellation");
              model.addAttribute("errorMessage",
                      "Your order cannot be cancelled as it has already been " +
                              shippingStatus.toLowerCase() + ".");
-             return "order-cancel-fail";
+             return "errorMsg";
          }
      }
 
      @GetMapping("/product/{id}/review")
-     public String reviewProduct(@PathVariable("id") Long productId, Model model, HttpSession session) {
-        return "product-review";
+     public String reviewProduct(@PathVariable("id") long productId,
+                                 @RequestParam("orderId") long orderId,
+                                 Model model, HttpSession session) {
+        Product product = productService.getProductById(productId);
+        Order order = orderService.findByOrderId(orderId);
+        Shipping shipping = order.getShipping();
+        String shippingStatus = shipping.getShippingStatus();
+
+         if (shippingStatus.equalsIgnoreCase("Delivered")) {
+             model.addAttribute("order", order);
+             model.addAttribute("product", product);
+             model.addAttribute("review", new Review());
+             return "product-review";
+         } else {
+             model.addAttribute("errorTitle", "Product Review Unsuccessful");
+             model.addAttribute("errorMessage",
+                     "A review cannot be created yet as the order has not been delivered.");
+             return "errorMsg";
+         }
      }
 
     @PostMapping("/product/{id}/review/create")

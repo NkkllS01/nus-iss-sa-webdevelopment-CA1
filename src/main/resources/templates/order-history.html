@@ -4,6 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Order History</title>
+    <style>
+        .custom-btn {
+            background-color: #FF7101;
+            border-color: #FF7101;
+            color: #fff;
+        }
+        .custom-btn:hover {
+            background-color: #E05D00; /* Darker shade on hover */
+            border-color: #E05D00;     /* Match the border color */
+            color: #fff;               /* Keep the text color white */
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -28,8 +40,8 @@
             <td th:text="${order.orderStatus}">Status</td>
             <td>
                 <div class="btn-grp">
-                    <a th:href="@{/orders/{id}/cancel(id=${order.id})}" class="btn btn-primary btn-sm mb-3">Cancel Order</a>
-                    <a th:href="@{/orders/{id}(id=${order.id})}" class="btn btn-primary btn-sm mb-3">Order Details</a>
+                    <a th:href="@{/orders/{id}/cancel(id=${order.id})}" class="btn custom-btn btn-sm mb-3">Cancel Order</a>
+                    <a th:href="@{/orders/{id}(id=${order.id})}" class="btn custom-btn btn-sm mb-3">Order Details</a>
                 </div>
             </td>
         </tr>
