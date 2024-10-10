@@ -16,6 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         Logger.info("LoginInterceptor request: {}", request.getRequestURI());
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
+        //NOTICE! username may be very important, I recommend to add this attribute to Class User
         if (username == null) {
             //this redirection url may need modification
             response.sendRedirect("/login");
